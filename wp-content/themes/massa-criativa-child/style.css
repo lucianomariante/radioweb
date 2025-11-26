@@ -1,0 +1,33 @@
+/*
+ Theme Name: Massa Criativa Child
+ Theme URI: https://massacriativa.example
+ Description: Child theme para Hello Elementor com tokens de design e otimizações leves.
+ Author: Massa Criativa
+ Author URI: https://massacriativa.example
+ Template: hello-elementor
+ Version: 1.0.0
+ License: GNU General Public License v2 or later
+ License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ Text Domain: massa-criativa-child
+*/
+
+/* Tokens de design (ajuste conforme Figma) */
+:root{
+  --mc-container: 1180px;
+  --mc-space-2xs: .25rem;
+  --mc-space-xs: .5rem;
+  --mc-space-sm: .75rem;
+  --mc-space-md: 1rem;
+  --mc-space-lg: 1.5rem;
+  --mc-space-xl: 2rem;
+  --mc-space-2xl: 3rem;
+  --mc-radius: 14px;
+  --mc-radius-xl: 22px;
+
+  --mc-primary: #0B5FFF;
+  --mc-primary-600: #0A52DA;
+  --mc-secondary: #0F172A;
+  --mc-bg: #ffffff;
+  --mc-text: #0b1220;
+  --mc-muted: #6b7280;
+}

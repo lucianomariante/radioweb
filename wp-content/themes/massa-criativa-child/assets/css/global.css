@@ -1,0 +1,67 @@
+/* Reset leve + utilitários */
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  color: var(--mc-text);
+  background: var(--mc-bg);
+}
+
+.container, .mc-container{ width: min(100% - 2rem, var(--mc-container)); margin-inline: auto; }
+
+/* Header sticky com mudança de tema */
+.mc-header{
+  position: sticky; top: 0; z-index: 50;
+  transition: background .25s ease, box-shadow .25s ease;
+  background: transparent;
+}
+.mc-header.is-stuck{ background: rgba(255,255,255,.9); backdrop-filter: blur(8px); box-shadow: 0 10px 30px rgba(0,0,0,.06); }
+.mc-header .mc-logo--dark{ display: none; }
+.mc-header.is-stuck .mc-logo--light{ display: none; }
+.mc-header.is-stuck .mc-logo--dark{ display: inline-block; }
+
+/* Menu */
+.mc-nav{ display:flex; gap: var(--mc-space-lg); align-items:center; }
+.mc-nav a{ text-decoration: none; color: var(--mc-secondary); font-weight: 500; }
+.mc-nav a:hover{ color: var(--mc-primary); }
+
+/* Botões */
+.mc-btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.75rem 1.25rem; border-radius: 999px;
+  background: var(--mc-primary); color:#fff; font-weight:600; text-decoration:none;
+  box-shadow: 0 12px 30px rgba(11,95,255,.15);
+}
+.mc-btn--ghost{ background: transparent; color: var(--mc-secondary); border:1px solid rgba(2,6,23,.08); }
+.mc-btn:hover{ transform: translateY(-1px); }
+
+/* Seções base (aplique estas classes em Contêineres do Elementor) */
+.section{ padding-block: clamp(2.5rem, 4vw, 5rem); }
+.section--hero{ padding-block: clamp(5rem, 7vw, 8rem); }
+.section--dark{ background: #0B1220; color: #F8FAFC; }
+.section--muted{ background: #F8FAFC; }
+
+/* Cards */
+.mc-card{
+  background: #fff; border:1px solid rgba(2,6,23,.06);
+  border-radius: var(--mc-radius); padding: 1.25rem;
+  box-shadow: 0 6px 16px rgba(2,6,23,.04);
+}
+.mc-card h3{ margin: .25rem 0 .5rem; font-size: clamp(1.05rem, 1.5vw, 1.25rem); }
+.mc-card p{ color: var(--mc-muted); }
+
+/* Utilitários */
+.grid{ display:grid; gap: var(--mc-space-xl); }
+.grid-2{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+.grid-3{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+@media (max-width: 980px){
+  .grid-2, .grid-3{ grid-template-columns: 1fr; }
+}
+
+.hide-desktop{ display:none; }
+@media (max-width:980px){ .hide-desktop{ display:initial; } }
+
+/* Rodapé */
+.mc-footer{ padding: 2rem 0; color:#475569; font-size:.95rem; }
+.mc-footer a{ color:inherit; text-decoration:none; }
+.mc-footer a:hover{ color:var(--mc-primary); }
