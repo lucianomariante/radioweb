@@ -30,6 +30,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class ThePlus_Syntax_Highlighter extends Widget_Base {
 
+	/**
+	 * Document Link For Need help.
+	 *
+	 * @var tp_doc of the class.
+	 */
 	public $tp_doc = L_THEPLUS_TPDOC;
 
 	/**

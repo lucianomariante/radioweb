@@ -27,6 +27,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class ThePlus_Block_Quote extends Widget_Base {
 
+	/**
+	 * Document Link For Need help.
+	 *
+	 * @since 5.3.3
+	 *
+	 * @var tp_doc of the class.
+	 */
 	public $tp_doc = L_THEPLUS_TPDOC;
 
 	/**

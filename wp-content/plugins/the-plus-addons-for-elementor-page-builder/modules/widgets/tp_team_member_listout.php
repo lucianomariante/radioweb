@@ -175,6 +175,19 @@ class L_ThePlus_Team_Member_ListOut extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'selctSource_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i>%s</i></p>',
+						esc_html__( 'Choose how you want to add your team members, either dynamically from a Post Type or manually using the Repeater option.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
+			)
+		);
+		$this->add_control(
 			'how_it_works_Post_Type',
 			array(
 				'label'     => wp_kses_post( 
@@ -371,13 +384,7 @@ class L_ThePlus_Team_Member_ListOut extends Widget_Base {
 		$this->add_control(
 			'tmList',
 			array(
-				'label'       => wp_kses_post( 
-					sprintf(
-						'%s <a class="tp-docs-link" href="%s" target="_blank" rel="noopener noreferrer"> <i class="eicon-help-o"></i> </a>',
-						esc_html__( 'Member List', 'tpebl' ),
-						esc_url( $this->tp_doc . 'add-category-wise-filter-in-team-member-grid-in-elementor/?utm_source=wpbackend&utm_medium=elementoreditor&utm_campaign=widget' ),
-					) 
-				),
+				'label'       => esc_html__( 'Member List', 'tpebl' ),
 				'type'        => Controls_Manager::REPEATER,
 				'fields'      => $repeater->get_controls(),
 				'default'     => array(
@@ -602,8 +609,13 @@ class L_ThePlus_Team_Member_ListOut extends Widget_Base {
 			'post_offset_note',
 			array(
 				'type' => Controls_Manager::RAW_HTML,
-				'raw' => "<b>Note:</b> Hide posts from the beginning of listing.",
-				'content_classes' => 'tp-controller-notice',
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i>%s</i></p>',
+						esc_html__( 'Hide posts from the beginning of listing.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
 			)
 		);
 		$this->add_control(

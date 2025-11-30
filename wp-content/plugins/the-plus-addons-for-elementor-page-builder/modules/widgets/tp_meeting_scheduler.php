@@ -145,6 +145,7 @@ class ThePlus_Meeting_Scheduler extends Widget_Base {
 	 * @version 5.4.2
 	 */
 	protected function register_controls() {
+
 		$this->start_controls_section(
 			'content_section',
 			array(

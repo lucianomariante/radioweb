@@ -110,8 +110,7 @@
         const widgetTitle = widget.find('.title-wrapper .title').text() || 'Pro Widget';
 
         const matchedWidget = tpPanelSettings.tp_pro_widgets.find(item => item.title === widgetTitle);
-        const promoUrl = matchedWidget?.promo_url || 'https://theplusaddons.com/pricing/?utm_source=wpbackend&utm_medium=elementoreditor&utm_campaign=links';
-        const demoUrl = matchedWidget?.demo_url || 'https://theplusaddons.com/?utm_source=wpbackend&utm_medium=elementoreditor&utm_campaign=links';
+        const demoUrl  = matchedWidget?.demo_url || 'https://theplusaddons.com/';
 
         $('#tp-custom-dialog', parent.document).remove();
 
@@ -135,7 +134,7 @@
                 <p>Unlock this widget by upgrading to The Plus Addons for Elementor Pro. Use Code FIRST20 to get FLAT 20% OFF now.</p>
             </div>
             <div class="tp-dialog-footer">
-                <a href="${promoUrl}?utm_source=wpbackend&utm_medium=elementoreditor&utm_campaign=links" class="tp-widget-dwl" target="_blank">Get Pro</a>
+                <a href="https://theplusaddons.com/pricing/?utm_source=wpbackend&utm_medium=elementoreditor&utm_campaign=links" class="tp-widget-dwl" target="_blank">Get Pro</a>
                 <a href="${demoUrl}?utm_source=wpbackend&utm_medium=elementoreditor&utm_campaign=links" class="tp-widget-demo" target="_blank">Live Demos</a>
             </div>
         </div>

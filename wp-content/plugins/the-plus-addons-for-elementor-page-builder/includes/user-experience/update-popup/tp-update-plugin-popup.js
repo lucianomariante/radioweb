@@ -1,8 +1,6 @@
 // let params = new URLSearchParams(window.location.href),
 //     checkparams = params.get('tpae_user_review');
 
-const { __ } = wp.i18n;
-
 // if( checkparams ) {
     document.addEventListener("DOMContentLoaded", function () {
 

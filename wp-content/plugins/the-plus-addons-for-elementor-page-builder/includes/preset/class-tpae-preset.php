@@ -34,7 +34,7 @@ if ( ! class_exists( 'Tpae_Preset' ) ) {
 		 *
 		 * @var api
 		 */
-		public $api = 'https://wdesignkit.com/api/wp/widget/preset';
+		public $api = 'https://api.wdesignkit.com/api/wp/widget/preset';
 
 		/**
 		 *  Initiator

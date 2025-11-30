@@ -72,7 +72,7 @@ class L_ThePlus_Header_Extras extends Widget_Base {
 	 * @version 5.4.2
 	 */
 	public function get_categories() {
-		return array( 'plus-header' );
+		return array( 'plus-advanced', 'plus-header' );
 	}
 
 	/**

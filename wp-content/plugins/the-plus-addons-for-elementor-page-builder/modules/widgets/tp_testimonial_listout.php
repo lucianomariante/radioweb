@@ -323,6 +323,19 @@ class L_ThePlus_Testimonial_ListOut extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'tlContentFrom_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i>%s</i></p>',
+						esc_html__( 'Choose how you want to display testimonials, fetch them dynamically from a Post Type or add them manually using the Repeater option for full control over each testimonial.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
+			)
+		);
+		$this->add_control(
 			'how_it_works_Post_Type',
 			array(
 				'label' => wp_kses_post(
@@ -404,9 +417,14 @@ class L_ThePlus_Testimonial_ListOut extends Widget_Base {
 		$repeater->add_control(
 			'testiLogoNote',
 			array(
-				'type'            => Controls_Manager::RAW_HTML,
-				'raw'             => 'Note : This is just for style 4.',
-				'content_classes' => 'tp-controller-notice',
+				'type'        => Controls_Manager::RAW_HTML,
+				'raw'         => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i>%s</i></p>',
+						esc_html__( 'This is just for style 4.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
 			)
 		);
 		$this->add_control(
@@ -562,8 +580,13 @@ class L_ThePlus_Testimonial_ListOut extends Widget_Base {
 			'post_offset_note',
 			array(
 				'type' => Controls_Manager::RAW_HTML,
-				'raw' => '<b>Note:</b> Hide posts from the beginning of listing.',
-				'content_classes' => 'tp-controller-notice',
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i>%s</i></p>',
+						esc_html__( 'Hide posts from the beginning of listing.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
 			)
 		);
 		$this->add_control(
@@ -644,6 +667,23 @@ class L_ThePlus_Testimonial_ListOut extends Widget_Base {
 				'condition' => array(
 					'tlContentFrom' => array( 'tlrepeater' ),
 					'layout'        => array( 'carousel' ),
+				),
+			)
+		);
+		$this->add_control(
+			'caroByheight_label',
+			array(
+				'type' => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i>%s</i></p>',
+						esc_html__( 'You can limit your content to keep all testimonials visually balanced, choose whether to restrict by text length or section height for a cleaner layout.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
+				'condition' => array(
+					'tlContentFrom' => 'tlrepeater',
+					'layout'        => 'carousel',
 				),
 			)
 		);
@@ -1776,15 +1816,20 @@ class L_ThePlus_Testimonial_ListOut extends Widget_Base {
 					'1' => esc_html__( 'One Column', 'tpebl' ),
 					'2' => esc_html__( 'All Visible Columns (PRO)', 'tpebl' ),
 				),
-				'separator' => 'after',
 			)
 		);
 		$this->add_control(
 			'steps_slide_note',
 			array(
-				'type' => Controls_Manager::RAW_HTML,
-				'raw' => '<b>Note:</b> Select option of column scroll on previous or next in carousel.',
-				'content_classes' => 'tp-controller-notice',
+				'type'        => Controls_Manager::RAW_HTML,
+				'raw'         => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i>%s</i></p>',
+						esc_html__( 'Select option of column scroll on previous or next in carousel.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
+				'separator' => 'after',
 			)
 		);
 		$this->add_responsive_control(

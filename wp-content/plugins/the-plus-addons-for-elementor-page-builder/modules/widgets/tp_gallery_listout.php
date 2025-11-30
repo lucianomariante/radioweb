@@ -467,12 +467,41 @@ class L_ThePlus_Gallery_ListOut extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'display_title_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text">%s</p>',
+						esc_html__( 'Turn this on to show image titles directly inside your gallery items.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
+			)
+		);
+		$this->add_control(
 			'post_title_tag',
 			array(
 				'label'     => esc_html__( 'Title Tag', 'tpebl' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'h3',
 				'options'   => l_theplus_get_tags_options(),
+				'condition' => array(
+					'display_title' => 'yes',
+				),
+			)
+		);
+		$this->add_control(
+			'post_title_tag_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text">%s</p>',
+						esc_html__( 'Select the proper heading tag for your image titles to keep your design and SEO consistent.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
 				'condition' => array(
 					'display_title' => 'yes',
 				),
@@ -490,6 +519,19 @@ class L_ThePlus_Gallery_ListOut extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'display_excerpt_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text">%s</p>',
+						esc_html__( 'Show short captions or descriptions below your gallery images for added context.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
+			)
+		);
+		$this->add_control(
 			'display_box_link',
 			array(
 				'label' => wp_kses_post(
@@ -504,6 +546,19 @@ class L_ThePlus_Gallery_ListOut extends Widget_Base {
 				'label_off' => __( 'Hide', 'tpebl' ),
 				'default'   => 'no',
 				'separator' => 'before',
+			)
+		);
+		$this->add_control(
+			'display_box_link_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text">%s</p>',
+						esc_html__( ' Activate this to make each gallery item clickable and lead users to the desired link.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
 			)
 		);
 		$this->add_control(

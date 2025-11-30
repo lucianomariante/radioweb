@@ -73,7 +73,7 @@ class L_ThePlus_Breadcrumbs_Bar extends Widget_Base {
 	 * @since 6.1.0
 	 */
 	public function get_categories() {
-		return array( 'plus-header' );
+		return array( 'plus-essential', 'plus-single' );
 	}
 
 	/**
@@ -1488,7 +1488,7 @@ class L_ThePlus_Breadcrumbs_Bar extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner #breadcrumbs > span:not(.del) a,{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner #breadcrumbs > span:not(.del) .current_tab_sec' => 'background: {{VALUE}} !important',
-					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner.bred_style_2 #breadcrumbs > span:not(.del):before' => 'border-left: 30px solid {{VALUE}}',
+					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner.bred_style_2 #breadcrumbs > span:not(.del):before' => 'border-left-color: {{VALUE}}',
 				),
 			)
 		);
@@ -1499,8 +1499,7 @@ class L_ThePlus_Breadcrumbs_Bar extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner #breadcrumbs > span.bc_home .home_bread_tab' => 'background: {{VALUE}} !important',
-					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner.bred_style_2 #breadcrumbs > span.bc_home:before' => 'border-left: 30px solid {{VALUE}}',
-
+					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner.bred_style_2 #breadcrumbs > span.bc_home:before' => 'border-left-color: {{VALUE}}',
 				),
 			)
 		);
@@ -1511,7 +1510,7 @@ class L_ThePlus_Breadcrumbs_Bar extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner #breadcrumbs > span:not(.del) .current_tab_sec' => 'background: {{VALUE}} !important',
-					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner.bred_style_2 #breadcrumbs > span.current:before,{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner.bred_style_2 #breadcrumbs > span.current_active:before' => 'border-left: 30px solid {{VALUE}}',
+					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner.bred_style_2 #breadcrumbs > span.current:before,{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner.bred_style_2 #breadcrumbs > span.current_active:before' => 'border-left-color: {{VALUE}}',
 				),
 			)
 		);
@@ -1529,7 +1528,7 @@ class L_ThePlus_Breadcrumbs_Bar extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner #breadcrumbs > span:not(.del):hover a,{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner #breadcrumbs > span.current:hover .current_tab_sec,{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner #breadcrumbs > span.current_active:hover .current_tab_sec' => 'background: {{VALUE}} !important',
-					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner.bred_style_2 #breadcrumbs > span:not(.del):hover:before' => 'border-left: 30px solid {{VALUE}}',
+					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner.bred_style_2 #breadcrumbs > span:not(.del):hover:before' => 'border-left-color: {{VALUE}}',
 				),
 			)
 		);
@@ -1540,7 +1539,7 @@ class L_ThePlus_Breadcrumbs_Bar extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner #breadcrumbs > span.bc_home:hover a' => 'background: {{VALUE}} !important',
-					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner.bred_style_2 #breadcrumbs > span.bc_home:hover:before' => 'border-left: 30px solid {{VALUE}}',
+					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner.bred_style_2 #breadcrumbs > span.bc_home:hover:before' => 'border-left-color: {{VALUE}}',
 				),
 			)
 		);
@@ -1551,7 +1550,7 @@ class L_ThePlus_Breadcrumbs_Bar extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner #breadcrumbs > span.current:hover .current_tab_sec,{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner #breadcrumbs > span.current_active:hover .current_tab_sec' => 'background: {{VALUE}} !important',
-					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner.bred_style_2 #breadcrumbs > span.current:hover:before,{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner.bred_style_2 #breadcrumbs > span.current_active:hover:before' => 'border-left: 30px solid {{VALUE}}',
+					'{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner.bred_style_2 #breadcrumbs > span.current:hover:before,{{WRAPPER}} .pt_plus_breadcrumbs_bar_inner.bred_style_2 #breadcrumbs > span.current_active:hover:before' => 'border-left-color: {{VALUE}}',
 				),
 			)
 		);

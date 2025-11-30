@@ -74,7 +74,7 @@ class ThePlus_Post_Author extends Widget_Base {
 	 * @version 5.4.2
 	 */
 	public function get_categories() {
-		return array( 'plus-builder' );
+		return array( 'plus-essential', 'plus-single' );
 	}
 
 	/**
@@ -250,6 +250,7 @@ class ThePlus_Post_Author extends Widget_Base {
 			)
 		);
 		$this->end_controls_section();
+		
 		$this->start_controls_section(
 			'tpebl_section_needhelp',
 			array(

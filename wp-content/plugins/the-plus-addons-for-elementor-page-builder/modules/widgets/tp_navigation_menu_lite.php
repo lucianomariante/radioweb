@@ -76,7 +76,7 @@ class ThePlus_Navigation_Menu_Lite extends Widget_Base {
 	 * @version 5.4.2
 	 */
 	public function get_categories() {
-		return array( 'plus-header' );
+		return array( 'plus-advanced', 'plus-header' );
 	}
 
 	/**
@@ -348,10 +348,39 @@ class ThePlus_Navigation_Menu_Lite extends Widget_Base {
 				'type'        => Controls_Manager::SELECT,
 				'default'     => '0',
 				'options'     => L_theplus_get_templates(),
+				'classes'    => 'tp-template-create-btn',
 				'label_block' => 'true',
 				'condition'   => array(
 					'depth'     => '1',
 					'SmenuType' => 'mega-menu',
+				),
+			)
+		);
+		$repeater->add_control(
+			'liveeditor',
+			array(
+				'type'            => Controls_Manager::RAW_HTML,
+				'raw'             => '<a class="tp-live-editor" id="tp-live-editor-button">Edit Template</a>',
+				'content_classes' => 'tp-live-editor-btn',
+				'label_block'     => true,
+				'condition'       => array(
+					'depth'      => '1',
+					'SmenuType'  => 'mega-menu',
+					'blockTemp!' => '0',
+				),
+			)
+		);
+		$repeater->add_control(
+			'create',
+			array(
+				'type'            => Controls_Manager::RAW_HTML,
+				'raw'             => '<a class="tp-live-create" id="tp-live-create-button">Create Template</a>',
+				'content_classes' => 'tp-live-create-btn',
+				'label_block'     => true,
+				'condition'       => array(
+					'depth'     => '1',
+					'SmenuType' => 'mega-menu',
+					'blockTemp' => '0',
 				),
 			)
 		);
@@ -1034,6 +1063,7 @@ class ThePlus_Navigation_Menu_Lite extends Widget_Base {
 				'type'        => Controls_Manager::SELECT,
 				'default'     => '0',
 				'options'     => L_theplus_get_templates(),
+				'classes'    => 'tp-template-create-btn',
 				'label_block' => 'true',
 				'condition'   => array(
 					'show_mobile_menu' => 'yes',
@@ -1041,6 +1071,34 @@ class ThePlus_Navigation_Menu_Lite extends Widget_Base {
 				'condition'   => array(
 					'show_mobile_menu'    => 'yes',
 					'mobile_menu_content' => 'template-menu',
+				),
+			)
+		);
+		$this->add_control(
+			'liveeditor1',
+			array(
+				'type'            => Controls_Manager::RAW_HTML,
+				'raw'             => '<a class="tp-live-editor" id="tp-live-editor-button">Edit Template</a>',
+				'content_classes' => 'tp-live-editor-btn',
+				'label_block'     => true,
+				'condition'       => array(
+					'show_mobile_menu'        => 'yes',
+					'mobile_menu_content'     => 'template-menu',
+					'mobile_navbar_template!' => '0',
+				),
+			)
+		);
+		$this->add_control(
+			'create1',
+			array(
+				'type'            => Controls_Manager::RAW_HTML,
+				'raw'             => '<a class="tp-live-create" id="tp-live-create-button">Create Template</a>',
+				'content_classes' => 'tp-live-create-btn',
+				'label_block'     => true,
+				'condition'       => array(
+					'show_mobile_menu'       => 'yes',
+					'mobile_menu_content'    => 'template-menu',
+					'mobile_navbar_template' => '0',
 				),
 			)
 		);
@@ -2557,6 +2615,7 @@ class ThePlus_Navigation_Menu_Lite extends Widget_Base {
 					if ( $NextMenu != '' && $NextMenu['megaMType'] == 'default' && isset( $NextMenu['megaMAlign'] ) && $NextMenu['megaMAlign'] == 'center' ) {
 						$MegaMenuClass .= ' plus-dropdown-' . esc_attr( $NextMenu['megaMAlign'] );
 					}
+
 				}
 				$start_Li = "<li class='menu-item depth-" . esc_attr( $depth ) . ' ' . esc_attr( $dropdownClass ) . ' ' . esc_attr( $MegaMenuClass ) . ' ' . ( ! empty( $item['classTxt'] ) ? $item['classTxt'] : '' ) . ' elementor-repeater-item-' . esc_attr( $item['_id'] ) . $current_active . "' >";
 

@@ -197,6 +197,19 @@ class L_ThePlus_Social_Icon extends Widget_Base {
 				),
 			)
 		);
+		$this->add_control(
+			'repeater_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i>%s</i></p>',
+						esc_html__( 'Select the social media platform you want to display', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
+			)
+		);
 		$repeater = new \Elementor\Repeater();
 
 		$repeater->add_control(
@@ -204,7 +217,7 @@ class L_ThePlus_Social_Icon extends Widget_Base {
 			array(
 				'label'   => esc_html__( 'Social Network Select', 'tpebl' ),
 				'type'    => Controls_Manager::SELECT,
-				'default' => 'image',
+				'default' => 'none',
 				'options' => array(
 					'none'                    => esc_html__( 'None', 'tpebl' ),
 					'fa-deviantart'           => esc_html__( 'Deviantart ', 'tpebl' ),
@@ -274,6 +287,19 @@ class L_ThePlus_Social_Icon extends Widget_Base {
 			)
 		);
 		$repeater->add_control(
+			'social_url_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i>%s</i></p>',
+						esc_html__( 'Add the URL to your social profile or page.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
+			)
+		);
+		$repeater->add_control(
 			'social_text',
 			array(
 				'type'        => Controls_Manager::TEXT,
@@ -284,7 +310,19 @@ class L_ThePlus_Social_Icon extends Widget_Base {
 				'dynamic'     => array( 'active' => true ),
 			)
 		);
-
+		$repeater->add_control(
+			'social_text_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i>%s</i></p>',
+						esc_html__( 'Enter a custom title or label for the icon for accessibility or tooltip purposes.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
+			)
+		);
 		$repeater->add_control(
 			'icon_color',
 			array(
@@ -450,6 +488,19 @@ class L_ThePlus_Social_Icon extends Widget_Base {
 			)
 		);
 		$repeater->add_control(
+			'plus_conti_ani_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i>%s</i></p>',
+						esc_html__( 'Add a looping animation to make the icon more visually engaging.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
+			)
+		);
+		$repeater->add_control(
 			'plus_animation_effect',
 			array(
 				'label'     => esc_html__( 'Animation Effect', 'tpebl' ),
@@ -537,7 +588,7 @@ class L_ThePlus_Social_Icon extends Widget_Base {
 				'type'        => Controls_Manager::REPEATER,
 				'default'     => array(
 					array(
-						'pt_plus_social_icons' => '',
+						'pt_plus_social_icons' => 'none',
 					),
 				),
 				'fields'      => $repeater->get_controls(),
@@ -579,6 +630,19 @@ class L_ThePlus_Social_Icon extends Widget_Base {
 				'condition' => array(
 					'styles!' => 'custom',
 				),
+			)
+		);
+		$this->add_control(
+			'social_icon_verical_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i>%s</i></p>',
+						esc_html__( 'Enable this option to stack the social icons vertically instead of horizontally.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
 			)
 		);
 		$this->add_responsive_control(

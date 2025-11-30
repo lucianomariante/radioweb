@@ -316,6 +316,7 @@ class L_ThePlus_Button extends Widget_Base {
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'font_awesome',
 				'options'   => array(
+					'none'           => esc_html__( 'None', 'tpebl' ),
 					'font_awesome'   => esc_html__( 'Font Awesome', 'tpebl' ),
 					'font_awesome_5' => esc_html__( 'Font Awesome 5', 'tpebl' ),
 					'icon_mind'      => esc_html__( 'Icons Mind (Pro)', 'tpebl' ),
@@ -411,6 +412,33 @@ class L_ThePlus_Button extends Widget_Base {
 				),
 			)
 		);
+		$this->add_responsive_control(
+			'icon_circl_size',
+			array(
+				'type'        => Controls_Manager::SLIDER,
+				'label'       => esc_html__( 'Circle Size', 'tpebl' ),
+				'size_units'  => array( 'px' ),
+				'range'       => array(
+					'px' => array(
+						'min'  => 0,
+						'max'  => 200,
+						'step' => 1,
+					),
+				),
+				'default'     => array(
+					'unit' => 'px',
+					'size' => 50,
+				),
+				'render_type' => 'ui',
+				'selectors'   => array(
+					'{{WRAPPER}} .pt_plus_button.button-style-2 .button-link-wrap > i,{{WRAPPER}} .pt_plus_button.button-style-2 .btn-icon > i' => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};',
+				),
+				'condition'   => array(
+					'button_style'       => 'style-2',
+					'button_icon_style!' => 'none',
+				),
+			)
+		);
 		$this->add_control(
 			'before_after',
 			array(
@@ -424,7 +452,7 @@ class L_ThePlus_Button extends Widget_Base {
 				),
 				'condition' => array(
 					'button_style!'      => array( 'style-3', 'style-6', 'style-7', 'style-9', 'style-17' ),
-					'button_icon_style!' => '',
+					'button_icon_style!' => array( '', 'none' ),
 				),
 			)
 		);
@@ -440,7 +468,7 @@ class L_ThePlus_Button extends Widget_Base {
 				),
 				'condition' => array(
 					'button_style!'      => array( 'style-3', 'style-6', 'style-7', 'style-9', 'style-17' ),
-					'button_icon_style!' => '',
+					'button_icon_style!' => array( '', 'none' ),
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .button-link-wrap .button-after' => 'margin-left: {{SIZE}}{{UNIT}};',
@@ -463,7 +491,7 @@ class L_ThePlus_Button extends Widget_Base {
 				'separator' => 'before',
 				'condition' => array(
 					'button_style!'      => array( 'style-3', 'style-6', 'style-7', 'style-9', 'style-17' ),
-					'button_icon_style!' => '',
+					'button_icon_style!' => array( '', 'none' ),
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .button-link-wrap .btn-icon' => 'font-size: {{SIZE}}{{UNIT}};',

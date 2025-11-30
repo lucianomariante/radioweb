@@ -287,6 +287,19 @@ class L_ThePlus_Clients_ListOut extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'clientContentFrom_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i>%s</i></p>',
+						esc_html__( 'Choose where your client data comes from. Either manually or through a specific post type.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
+			)
+		);
+		$this->add_control(
 			'how_works_Post_Type',
 			array(
 				'label'     => wp_kses_post(
@@ -401,7 +414,12 @@ class L_ThePlus_Clients_ListOut extends Widget_Base {
 			'post_Note',
 			array(
 				'type'        => Controls_Manager::RAW_HTML,
-				'raw'         => '<p class="tp-controller-notice"><i>Hide posts from the beginning of listing.</i></p>',
+				'raw'         => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i>%s</i></p>',
+						esc_html__( 'Hide posts from the beginning of listing.', 'tpebl' ),
+					)
+				),
 				'label_block' => true,
 			)
 		);
@@ -521,6 +539,19 @@ class L_ThePlus_Clients_ListOut extends Widget_Base {
 				'label_on'  => esc_html__( 'Show', 'tpebl' ),
 				'label_off' => esc_html__( 'Hide', 'tpebl' ),
 				'default'   => 'yes',
+			)
+		);
+		$this->add_control(
+			'display_post_title_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i>%s</i></p>',
+						esc_html__( 'Toggle this on to show each client’s name below their logo for better identification.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
 			)
 		);
 		$this->add_control(

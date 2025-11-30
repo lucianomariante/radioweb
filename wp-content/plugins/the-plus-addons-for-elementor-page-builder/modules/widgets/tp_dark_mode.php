@@ -28,6 +28,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class ThePlus_Dark_Mode extends Widget_Base {
 
+	/**
+	 * Document Link For Need help.
+	 *
+	 * @since 5.3.3
+	 *
+	 * @var tp_doc of the class.
+	 */
 	public $tp_doc = L_THEPLUS_TPDOC;
 
 	/**
@@ -63,7 +70,7 @@ class ThePlus_Dark_Mode extends Widget_Base {
 	 * @since 1.0.0
 	 */
 	public function get_categories() {
-		return array( 'plus-essential' );
+		return array( 'plus-essential', 'plus-header' );
 	}
 
 	/**

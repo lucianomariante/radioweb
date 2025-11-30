@@ -177,25 +177,18 @@ a.plus-menu-icon-thumbnail.button.change-icon {
 } */
 #elementor-panel-category-plus-essential .elementor-element,
 #elementor-panel-category-plus-listing .elementor-element,
-#elementor-panel-category-plus-creatives .elementor-element,
-#elementor-panel-category-plus-tabbed .elementor-element,
-#elementor-panel-category-plus-adapted .elementor-element,
+#elementor-panel-category-plus-creative .elementor-element,
 #elementor-panel-category-plus-header .elementor-element{
 	position:relative;
 }
 /* #elementor-panel-category-plus-essential .elementor-element:hover .icon .theplus_backend_icon,
 #elementor-panel-category-plus-listing .elementor-element:hover .icon .theplus_backend_icon,
-#elementor-panel-category-plus-creatives .elementor-element:hover .icon .theplus_backend_icon,
-#elementor-panel-category-plus-tabbed .elementor-element:hover .icon .theplus_backend_icon,
-#elementor-panel-category-plus-adapted .elementor-element:hover .icon .theplus_backend_icon,
+#elementor-panel-category-plus-creative .elementor-element:hover .icon .theplus_backend_icon,
 #elementor-panel-category-plus-header .elementor-element:hover .icon .theplus_backend_icon,
 #elementor-panel-category-plus-essential .elementor-element:hover .title,
 #elementor-panel-category-plus-listing .elementor-element:hover .title,
-#elementor-panel-category-plus-creatives .elementor-element:hover .title,
-#elementor-panel-category-plus-tabbed .elementor-element:hover .title,
-#elementor-panel-category-plus-adapted .elementor-element:hover .title,
+#elementor-panel-category-plus-creative .elementor-element:hover .title,
 #elementor-panel-category-plus-header .elementor-element:hover .title,
-#elementor-panel-category-plus-builder .elementor-element:hover .title,
 #elementor-panel-category-plus-woo-builder .elementor-element:hover .title,
 .elementor-element:hover .icon i.theplus_backend_icon:after {
 	color: #8072fc;

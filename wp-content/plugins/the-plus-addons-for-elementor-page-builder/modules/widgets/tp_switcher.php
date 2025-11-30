@@ -82,7 +82,7 @@ class L_ThePlus_Switcher extends Widget_Base {
 	 * @version 5.4.2
 	 */
 	public function get_categories() {
-		return array( 'plus-tabbed' );
+		return array( 'plus-creative' );
 	}
 
 	/**
@@ -234,10 +234,39 @@ class L_ThePlus_Switcher extends Widget_Base {
 				'type'        => Controls_Manager::SELECT,
 				'default'     => '0',
 				'options'     => L_theplus_get_templates(),
+				'classes'    => 'tp-template-create-btn',
 				'label_block' => 'true',
 				'condition'   => array(
 					'content_a_source'      => 'template',
 					'content_template_type' => 'dropdown',
+				),
+			)
+		);
+		$this->add_control(
+			'liveeditor',
+			array(
+				'type'            => Controls_Manager::RAW_HTML,
+				'raw'             => '<a class="tp-live-editor" id="tp-live-editor-button">Edit Template</a>',
+				'content_classes' => 'tp-live-editor-btn',
+				'label_block'     => true,
+				'condition'       => array(
+					'content_a_source'      => 'template',
+					'content_template_type' => 'dropdown',
+					'content_a_template!'   => '0',
+				),
+			)
+		);
+		$this->add_control(
+			'create',
+			array(
+				'type'            => Controls_Manager::RAW_HTML,
+				'raw'             => '<a class="tp-live-create" id="tp-live-create-button">Create Template</a>',
+				'content_classes' => 'tp-live-create-btn',
+				'label_block'     => true,
+				'condition'       => array(
+					'content_a_source'      => 'template',
+					'content_template_type' => 'dropdown',
+					'content_a_template'    => '0',
 				),
 			)
 		);
@@ -362,10 +391,39 @@ class L_ThePlus_Switcher extends Widget_Base {
 				'type'        => Controls_Manager::SELECT,
 				'default'     => '0',
 				'options'     => L_theplus_get_templates(),
+				'classes'    => 'tp-template-create-btn',
 				'label_block' => 'true',
 				'condition'   => array(
 					'content_b_source'        => 'template',
 					'content_b_template_type' => 'dropdown',
+				),
+			)
+		);
+		$this->add_control(
+			'liveeditor1',
+			array(
+				'type'            => Controls_Manager::RAW_HTML,
+				'raw'             => '<a class="tp-live-editor" id="tp-live-editor-button">Edit Template</a>',
+				'content_classes' => 'tp-live-editor-btn',
+				'label_block'     => true,
+				'condition'       => array(
+					'content_b_source'        => 'template',
+					'content_b_template_type' => 'dropdown',
+					'content_b_template!'     => '0',
+				),
+			)
+		);
+		$this->add_control(
+			'create1',
+			array(
+				'type'            => Controls_Manager::RAW_HTML,
+				'raw'             => '<a class="tp-live-create" id="tp-live-create-button">Create Template</a>',
+				'content_classes' => 'tp-live-create-btn',
+				'label_block'     => true,
+				'condition'       => array(
+					'content_b_source'        => 'template',
+					'content_b_template_type' => 'dropdown',
+					'content_b_template'      => '0',
 				),
 			)
 		);

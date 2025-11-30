@@ -153,13 +153,15 @@ final class L_Theplus_Element_Load {
 
 					if ( isset( $installed_plugins[ $plugin ] ) ) {
 						echo '<div class="tp-tpae-button" style="margin-top: 10px;">
-							<a href="' . $activation_url . '" class="button" style="margin-right: 10px; background: #6660EF; color: #fff;">' . esc_html__( 'Activate Now', 'tpebl' ) . '</a>';
+								<a href="' . $activation_url . '" class="button" style="margin-right: 10px; background: #6660EF; color: #fff;">' . esc_html__( 'Activate Now', 'tpebl' ) . '</a>
+							</div>';
 					} else {
-						echo '<a href="' . $install_url . '" class="button" style="margin-right: 10px; background: #6660EF; color: #fff;">' . esc_html__( 'Install Now', 'tpebl' ) . '</a>';
+						echo '<div class="tp-tpae-button" style="margin-top: 10px;">
+								<a href="' . $install_url . '" class="button" style="margin-right: 10px; background: #6660EF; color: #fff;">' . esc_html__( 'Install Now', 'tpebl' ) . '</a>
+							</div>';
 					}
 					
-					echo '</div>
-				</div>
+				echo '</div>
 			</div>
 		</div>';
 	}
@@ -252,6 +254,7 @@ final class L_Theplus_Element_Load {
 		$theplus_options = get_option( 'theplus_options' );
 
 		$plus_extras = l_theplus_get_option( 'general', 'extras_elements' );
+		$elements    = l_theplus_get_option( 'general', 'check_elements' );
 
 		if ( ( isset( $plus_extras ) && empty( $plus_extras ) && empty( $theplus_options ) ) || ( ! empty( $plus_extras ) && in_array( 'plus_display_rules', $plus_extras ) ) ) {
 			add_action( 'wp_head', array( $this, 'print_style' ) );
@@ -260,6 +263,10 @@ final class L_Theplus_Element_Load {
 		// add_action( 'elementor/init', array( $this, 'add_elementor_category' ) );
 		add_action( 'elementor/elements/categories_registered', array( $this, 'add_elementor_category' ) );
 		add_action( 'elementor/editor/after_enqueue_styles', array( $this, 'theplus_editor_styles' ) );
+		
+		if ( defined( 'THEPLUS_VERSION' ) && ! empty( $elements ) && is_array( $elements ) && in_array( 'tp_social_feed', $elements ) ) {
+			add_action( 'wp_enqueue_scripts', array( $this, 'theplus_frontend_styles' ) );
+		}
 
 		add_filter( 'upload_mimes', array( $this, 'theplus_mime_types' ) );
 		add_filter( 'wp_handle_upload_prefilter', array( $this, 'theplus_sanitize_svg_upload' ) );
@@ -269,6 +276,7 @@ final class L_Theplus_Element_Load {
 
 		add_action( 'admin_footer', array( $this, 'tpae_add_notificetion' ) );
 		add_option( 'tpae_menu_notification', '1' );
+		add_option( 'tpae_whats_new_notification', '1' );
 	}
 
 	/**
@@ -333,6 +341,15 @@ final class L_Theplus_Element_Load {
 		if ( ! empty( $ui_theme ) && 'dark' === $ui_theme ) {
 			wp_enqueue_style( 'theplus-ele-admin-dark', L_THEPLUS_ASSETS_URL . 'css/admin/theplus-ele-admin-dark.css', array(), L_THEPLUS_VERSION, false );
 		}
+	}
+
+	/**
+	 * Load Icon library on the frontend side
+	 *
+	 * @since 6.4.2
+	 */
+	public function theplus_frontend_styles() {
+		wp_enqueue_style( 'theplus-icons-library', L_THEPLUS_ASSETS_URL . 'fonts/style.css', array(), L_THEPLUS_VERSION, false );
 	}
 
 	/**
@@ -438,19 +455,141 @@ final class L_Theplus_Element_Load {
 
 		$elementor = \Elementor\Plugin::$instance;
 
+		$post_id = get_the_ID();
+		$template_type = '';
+
+		if ( $post_id ) {
+			$document = \Elementor\Plugin::$instance->documents->get( $post_id );
+			if ( $document ) {
+				$template_type = $document->get_name();
+				$source_type   = get_post_meta( $post_id, '_elementor_source', true );
+			} else {
+				$template_type = get_post_meta( $post_id, '_elementor_template_type', true );
+			}
+		}
+
 		$plus_categories = array(
             'plus-essential'   => array( 'title' => 'Plus Essential', 'icon'  => 'fa fa-plug' ),
+            'plus-advanced'    => array( 'title' => 'Plus Advanced', 'icon'  => 'fa fa-plug' ),
+            'plus-creative'    => array( 'title' => 'Plus Creative', 'icon'  => 'fa fa-plug' ),
             'plus-listing'     => array( 'title' => 'Plus Listing', 'icon'  => 'fa fa-plug' ),
-            'plus-creatives'   => array( 'title' => 'Plus Creatives', 'icon'  => 'fa fa-plug' ),
-            'plus-forms'   	   => array( 'title' => 'Plus Forms', 'icon'  => 'fa fa-plug' ),
-            'plus-tabbed'      => array( 'title' => 'Plus Tabbed', 'icon'  => 'fa fa-plug' ),
-            'plus-adapted'     => array( 'title' => 'Plus Adapted', 'icon'  => 'fa fa-plug' ),
-            'plus-header'      => array( 'title' => 'Plus Header', 'icon'  => 'fa fa-plug' ),
-            'plus-builder'     => array( 'title' => 'Plus Builder', 'icon'  => 'fa fa-plug' ),
             'plus-social'      => array( 'title' => 'Plus Social', 'icon'  => 'fa fa-plug' ),
+            'plus-forms'   	   => array( 'title' => 'Plus Forms', 'icon'  => 'fa fa-plug' ),
             'plus-woo-builder' => array( 'title' => 'Plus WooCommerce', 'icon'  => 'fa fa-plug' ),
             'plus-depreciated' => array( 'title' => 'Plus Depreciated', 'icon'  => 'fa fa-plug' ),
+            // 'plus-header'      => array( 'title' => 'Plus Header', 'icon'  => 'fa fa-plug' ),
         );
+
+		if ( $post_id ) {
+			$post_type = get_post_type( $post_id );
+
+			if ( in_array( $post_type, [ 'nxt_builder', 'nxt_template' ], true ) ) {
+				$template_type = get_post_meta( $post_id, 'template_type', true );
+			}
+		}
+
+		if ( in_array( $template_type, [ 'header' ] ) ) {
+        	$all_categories = $elementor->elements_manager->get_categories();
+        	$new_categories = [];
+
+			foreach ( $all_categories as $key => $category ) {
+				$new_categories[ $key ] = $category;
+
+				if ( 'favorites' === $key ) {
+					$new_categories['plus-header'] = [
+						'title' => esc_html__( 'Plus Header', 'tpebl' ),
+						'icon'  => 'fa fa-plug',
+					];
+				}
+			}
+
+			$reflection = new \ReflectionProperty( $elementor->elements_manager, 'categories' );
+			$reflection->setAccessible( true );
+			$reflection->setValue( $elementor->elements_manager, $new_categories );
+		}
+
+		if ( in_array( $template_type, [ 'archive', 'archives' ] ) ) {
+        	$all_categories = $elementor->elements_manager->get_categories();
+        	$new_categories = [];
+
+			foreach ( $all_categories as $key => $category ) {
+				$new_categories[ $key ] = $category;
+
+				if ( 'favorites' === $key ) {
+					$new_categories['plus-archive'] = [
+						'title' => esc_html__( 'Plus Archive', 'tpebl' ),
+						'icon'  => 'fa fa-plug',
+					];
+				}
+			}
+
+			$reflection = new \ReflectionProperty( $elementor->elements_manager, 'categories' );
+			$reflection->setAccessible( true );
+			$reflection->setValue( $elementor->elements_manager, $new_categories );
+		}
+
+		if ( in_array( $template_type, [ 'product-archive' ] ) ) {
+        	$all_categories = $elementor->elements_manager->get_categories();
+
+        	$new_categories = [];
+
+			foreach ( $all_categories as $key => $category ) {
+				$new_categories[ $key ] = $category;
+
+				if ( 'favorites' === $key ) {
+					$new_categories['plus-product-archive'] = [
+						'title' => esc_html__( 'Plus Product Archive', 'tpebl' ),
+						'icon'  => 'fa fa-plug',
+					];
+				}
+			}
+
+			$reflection = new \ReflectionProperty( $elementor->elements_manager, 'categories' );
+			$reflection->setAccessible( true );
+			$reflection->setValue( $elementor->elements_manager, $new_categories );
+		}
+
+		if ( in_array( $template_type, [ 'product', 'singular' ] ) ) {
+        	$all_categories = $elementor->elements_manager->get_categories();
+
+        	$new_categories = [];
+
+			foreach ( $all_categories as $key => $category ) {
+				$new_categories[ $key ] = $category;
+
+				if ( 'favorites' === $key ) {
+					$new_categories['plus-product'] = [
+						'title' => esc_html__( 'Plus Product', 'tpebl' ),
+						'icon'  => 'fa fa-plug',
+					];
+				}
+			}
+
+			$reflection = new \ReflectionProperty( $elementor->elements_manager, 'categories' );
+			$reflection->setAccessible( true );
+			$reflection->setValue( $elementor->elements_manager, $new_categories );
+		}
+
+		if ( in_array( $template_type, [ 'single-page', 'single-post', 'singular' ] ) ) {
+        	$all_categories = $elementor->elements_manager->get_categories();
+
+        	$new_categories = [];
+
+			foreach ( $all_categories as $key => $category ) {
+				$new_categories[ $key ] = $category;
+
+				if ( 'favorites' === $key ) {
+					$new_categories['plus-single'] = [
+						'title' => esc_html__( 'Plus Single', 'tpebl' ),
+						'icon'  => 'fa fa-plug',
+					];
+				}
+			}
+
+			$reflection = new \ReflectionProperty( $elementor->elements_manager, 'categories' );
+			$reflection->setAccessible( true );
+			$reflection->setValue( $elementor->elements_manager, $new_categories );
+		}
 
         foreach ( $plus_categories as $index => $plus_widgets ) {
             $elementor->elements_manager->add_category(

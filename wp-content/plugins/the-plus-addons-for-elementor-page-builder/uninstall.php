@@ -21,9 +21,6 @@ if( 'enable' === $remove_db ) {
 	$remove_db_alldata   = ! empty( $theplus_options['tpae_db_alldata'] ) ? $theplus_options['tpae_db_alldata'] : '';
 
 	if( 'enable' === $remove_db_promotion ) {
-		delete_option('tpae_halloween_notice_dismissed');
-		delete_option('tpae_bfsale_notice_dismissed');
-		delete_option('tpae_cmsale_notice_dismissed');
 		delete_option('tp-rateus-notice');
 		delete_option('tp_wdkit_preview_popup');
 		delete_option('tp_editor_onbording_popup');

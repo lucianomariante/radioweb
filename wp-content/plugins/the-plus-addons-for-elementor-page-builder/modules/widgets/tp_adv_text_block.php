@@ -29,7 +29,7 @@ class ThePlus_Adv_Text_Block extends Widget_Base {
 	 *
 	 * @since 5.3.3
 	 *
-	 * @var TpDoc of the class.
+	 * @var tp_doc of the class.
 	 */
 	public $tp_doc = L_THEPLUS_TPDOC;
 

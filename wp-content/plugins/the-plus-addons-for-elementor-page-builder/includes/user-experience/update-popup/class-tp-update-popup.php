@@ -131,7 +131,7 @@ if ( ! class_exists( 'Tpae_Update_Popup' ) ) {
 			}
 
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_send_json_error( __( 'You are not allowed to do this action', 'theplus' ) );
+				wp_send_json_error( __( 'You are not allowed to do this action', 'tpebl' ) );
 			}
 
 			$get_type = ! empty( $_POST['type'] ) ? sanitize_text_field( wp_unslash( $_POST['type'] ) ) : '';

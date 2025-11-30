@@ -4,7 +4,7 @@ Tags: elementor, elementor widgets, elementor addons, elementor templates, widge
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 6.4.1
+Stable tag: 6.4.2
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -384,6 +384,35 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 12. Unique 22+ Elementor Extensions
 
 == Changelog ==
+
+= 6.4.2 =
+Add : Button : Add a none option for the Icon
+Add : Button : Add Icon circle size option for the Style-2
+Add : Heading Title : Add Separator Width/Height option for the Vertical Border Style
+Add : Heading Title : Add Spacing option between title & separator for the Classic Style
+Add : Heading Title : Add Spacing option between sub-title & separator for the Classic Style
+Improvement : Blog Listing : Add labels for the options
+Improvement : Clients Listing : Add labels for the options
+Improvement : Form Widget : Add labels for the options
+Improvement : Gallery Listing : Add labels for the options
+Improvement : Social Embed : Add labels for the options
+Improvement : Social Icon : Add labels for the options
+Improvement : Team Member Listing : Add labels for the options
+Improvement : Testimonial : Add labels for the options
+Improvement : Accordion : Add option to create or edit Template
+Improvement : Carousel Anything : Add option to create or edit Template
+Improvement : Navigation Menu Lite : Add option to create or edit Template
+Improvement : Page Scroll : Add option to create or edit Template
+Improvement : Switcher : Add option to create or edit Template
+Improvement : Tabs/Tours : Add option to create or edit Template
+Improvement : Equal Height : Language Compatibility
+Improvement : Dashboard : Design Improvements
+Improvement : Dashboard : Language Compatibility
+Fix : Accordion : Remove unnecessary bottom spacing
+Fix : Breadcrumbs Bar : Separator Global Background color not applying to the Arrow (Style-2)
+Fix : Post Comment : Remove unnecessary bottom & top spacing
+Fix : Post Comment : Reply text not working
+Fix : Minor Bug Fixes & Performance Improvements
 
 = 6.4.1 =
 Add : Blog listing : % option added for the content box for the style-5

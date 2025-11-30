@@ -76,7 +76,7 @@ class L_ThePlus_Blog_ListOut extends Widget_Base {
 	 * @since 1.0.0
 	 */
 	public function get_categories() {
-		return array( 'plus-listing' );
+		return array( 'plus-listing', 'plus-archive' );
 	}
 
 	/**
@@ -201,28 +201,18 @@ class L_ThePlus_Blog_ListOut extends Widget_Base {
 				'classes'     => 'tpae-visual_choice',
 			)
 		);
-
-		$this->add_control(
-			'smart_loop_builder_note_doc',
-			array(
-				'label'     => wp_kses_post(
-					sprintf(
-						'<a class="tp-docs-link" href="%s" target="_blank" rel="noopener noreferrer">%s <i class="eicon-help-o"></i></a>',
-						esc_url( $this->tp_doc . 'create-custom-elementor-post-loop-skin-with-smart-loop-builder/?utm_source=wpbackend&utm_medium=elementoreditor&utm_campaign=widget' ),
-						esc_html__( 'Learn How it works', 'tpebl' )
-					)
-				),
-				'type'      => Controls_Manager::HEADING,
-				'condition' => array(
-					'style' => array( 'smart-loop-builder' ),
-				),
-			)
-		);
 		$this->add_control(
 			'smart_loop_builder_note',
 			array(
-				'type'        => Controls_Manager::RAW_HTML,
-				'raw'         => '<p class="tp-controller-notice"><i>Note : This is first version of Smart Loop Builder, We will have more dynamic options, ACF support and release in more listing widgets coming up next..</i></p>',
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i> %s <a class="tp-docs-link" href="%s" target="_blank" rel="noopener noreferrer">%s</a></i></p>',
+						esc_html__( 'This is first version of Smart Loop Builder, We will have more dynamic options, ACF support and release in more listing widgets coming up next..', 'tpebl' ),
+						esc_url( $this->tp_doc . 'create-custom-elementor-post-loop-skin-with-smart-loop-builder/?utm_source=wpbackend&utm_medium=elementoreditor&utm_campaign=widget' ),
+						esc_html__( 'Learn More', 'tpebl' ),
+					)
+				),
 				'label_block' => true,
 				'condition'   => array(
 					'style' => array( 'smart-loop-builder' ),
@@ -391,13 +381,7 @@ class L_ThePlus_Blog_ListOut extends Widget_Base {
 		$this->add_control(
 			'post_offset',
 			array(
-				'label'   => wp_kses_post(
-					sprintf(
-						'%s <a class="tp-docs-link" href="%s" target="_blank" rel="noopener noreferrer"><i class="eicon-help-o"></i></a>',
-						esc_html__( 'Offset Posts', 'tpebl' ),
-						esc_url( $this->tp_doc . 'hide-recent-blog-post-from-list-in-elementor/?utm_source=wpbackend&utm_medium=elementoreditor&utm_campaign=widget' )
-					)
-				),
+				'label'     => wp_kses_post( "Offset Posts" ),
 				'type'    => Controls_Manager::NUMBER,
 				'min'     => 0,
 				'max'     => 50,
@@ -406,10 +390,17 @@ class L_ThePlus_Blog_ListOut extends Widget_Base {
 			)
 		);
 		$this->add_control(
-			'post_offset_Note',
+			'post_offset_label',
 			array(
-				'type'        => Controls_Manager::RAW_HTML,
-				'raw'         => '<p class="tp-controller-notice"><i>Note : Hide posts from the beginning of listing.</i></p>',
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i> %s <a class="tp-docs-link" href="%s" target="_blank" rel="noopener noreferrer">%s</a></i></p>',
+						esc_html__( 'Add a number here to hide posts from the beginning of your recent posts listing', 'tpebl' ),
+						esc_url( $this->tp_doc . 'hide-recent-blog-post-from-list-in-elementor/?utm_source=wpbackend&utm_medium=elementoreditor&utm_campaign=widget' ),
+						esc_html__( 'Learn More', 'tpebl' ),
+					)
+				),
 				'label_block' => true,
 			)
 		);
@@ -610,6 +601,22 @@ class L_ThePlus_Blog_ListOut extends Widget_Base {
 				),
 				'columns'     => 4,
 				'classes'     => 'tpae-visual_choice',
+			)
+		);
+		$this->add_control(
+			'post_extra_option_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"><i>%s</i></p>',
+						esc_html__( 'You can choose how additional posts load on your page, either through Pagination, Load More, or Lazy Load.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
+				'condition'   => array(
+					'layout!' => array( 'carousel' ),
+				),
 			)
 		);
 		$this->add_control(
@@ -1044,7 +1051,19 @@ class L_ThePlus_Blog_ListOut extends Widget_Base {
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'h3',
 				'options'   => l_theplus_get_tags_options(),
-				'separator' => 'after',
+			)
+		);
+		$this->add_control(
+			'post_title_tag_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text">%s</p>',
+						esc_html__( 'Select the heading tag for your post title. Choose based on your page hierarchy to keep your website SEO-friendly and structured.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
 			)
 		);
 		$this->add_control(
@@ -1055,6 +1074,19 @@ class L_ThePlus_Blog_ListOut extends Widget_Base {
 				'label_on'  => esc_html__( 'Show', 'tpebl' ),
 				'label_off' => esc_html__( 'Hide', 'tpebl' ),
 				'default'   => 'no',
+			)
+		);
+		$this->add_control(
+			'display_title_limit_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text">%s</p>',
+						esc_html__( 'Enable this to limit long post titles and keep your layout clean. Perfect when you want all cards or listings to look uniform.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
 			)
 		);
 		$this->add_control(
@@ -1182,6 +1214,19 @@ class L_ThePlus_Blog_ListOut extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'show_post_date_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"> %s </p>',
+						esc_html__( 'Turn this on to display the post’s published date or last updated time below the title.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
+			)
+		);
+		$this->add_control(
 			'show_post_author',
 			array(
 				'label'     => esc_html__( 'Author Name', 'tpebl' ),
@@ -1192,6 +1237,19 @@ class L_ThePlus_Blog_ListOut extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'show_post_author_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"> %s </p>',
+						esc_html__( 'Enable this to show the author name under each post.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
+			)
+		);
+		$this->add_control(
 			'show_read_time',
 			array(
 				'label'     => esc_html__( 'Read Time', 'tpebl' ),
@@ -1199,6 +1257,19 @@ class L_ThePlus_Blog_ListOut extends Widget_Base {
 				'label_on'  => esc_html__( 'Show', 'tpebl' ),
 				'label_off' => esc_html__( 'Hide', 'tpebl' ),
 				'default'   => 'no',
+			)
+		);
+		$this->add_control(
+			'show_read_time_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"> %s </p>',
+						esc_html__( 'Display an estimated reading time for each post to help visitors gauge their reading commitment.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
 			)
 		);
 		$this->add_control(
@@ -1361,6 +1432,19 @@ class L_ThePlus_Blog_ListOut extends Widget_Base {
 				'label_on'  => esc_html__( 'Show', 'tpebl' ),
 				'label_off' => esc_html__( 'Hide', 'tpebl' ),
 				'default'   => 'yes',
+			)
+		);
+		$this->add_control(
+			'display_post_meta_label',
+			array(
+				'type'  => Controls_Manager::RAW_HTML,
+				'raw'   => wp_kses_post(
+					sprintf(
+						'<p class="tp-controller-label-text"> %s </p>',
+						esc_html__( 'Enable this to show extra post details like date, author, and other meta information for better context.', 'tpebl' ),
+					)
+				),
+				'label_block' => true,
 			)
 		);
 		$this->add_control(
