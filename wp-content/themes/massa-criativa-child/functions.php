@@ -7,13 +7,15 @@
 add_action('wp_enqueue_scripts', function(){
   // carrega CSS do filho
   wp_enqueue_style('mc-child-global', get_stylesheet_directory_uri() . '/assets/css/global.css', [], '1.0.0', 'all');
+  wp_enqueue_style('mc-child-components', get_stylesheet_directory_uri() . '/assets/css/components.css', ['mc-child-global'], '1.0.0', 'all');
   // carrega JS
   wp_enqueue_script('mc-site', get_stylesheet_directory_uri() . '/assets/js/site.js', [], '1.0.0', true);
+  wp_enqueue_script('mc-components', get_stylesheet_directory_uri() . '/assets/js/components.js', ['mc-site'], '1.0.0', true);
 }, 20);
 
 // Defer para o JS do tema
 add_filter('script_loader_tag', function($tag, $handle){
-  if ($handle === 'mc-site') {
+  if (in_array($handle, ['mc-site', 'mc-components'], true)) {
     $tag = str_replace(' src', ' defer src', $tag);
   }
   return $tag;
