@@ -78,6 +78,14 @@
   flex-wrap: nowrap;
 }
 
+/* Wrapper interno vira coluna para empurrar o CTA */
+#rw-acc1 .rw-acc__item > .e-con-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1; /* garante que o conteúdo interno ocupe toda a altura disponível */
+}
+
 /* Cada card como coluna flexível */
 #rw-acc1 .rw-acc__item {
   flex: 1 1 24%;
@@ -142,7 +150,8 @@
 /* O CTA sempre fica no rodapé do card */
 #rw-acc1 .rw-acc__cta.elementor-widget-button {
   margin-top: auto;
-  align-self: flex-start;
+  align-self: stretch;
+  display: flex;
 }
 
 
@@ -175,10 +184,6 @@
 #rw-acc1 .rw-acc__item:not(.is-active) .rw-acc__cta .elementor-button-text {
   display: none;                                 /* some com “SAIBA MAIS” */
 }
-
-#rw-acc1 .rw-acc__item:not(.is-active) .rw-acc__cta .elementor-button-text {
-  display: none;                                 /* some com “SAIBA MAIS” */
-}
 #rw-acc1 .rw-acc__item:not(.is-active) .rw-acc__cta .elementor-button:after {
   content: '\2192';                              /* seta → (troque por ↗ se preferir) */
   font-size: 18px;
@@ -192,6 +197,13 @@
   }
   #rw-acc1 .rw-acc__item {
     flex-basis: auto;
+    min-height: 220px;
+  }
+  #rw-acc1 .rw-acc__item.is-active {
+    min-height: 320px;
+  }
+  #rw-acc1 .rw-acc__item:not(.is-active) {
+    min-height: 140px;
   }
 }/* End custom CSS */
 
